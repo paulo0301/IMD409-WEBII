@@ -1,22 +1,25 @@
 package com.jeanlima.springmvcapp.model;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Aluno {
 
-    private Integer id;
+    private String id;
     private String primeiroNome;
     private String ultimoNome;
-    private String curso;
+    private Curso curso;
     private String linguagem;
     private String email;
     private List<String> sistemasOperacionas;
 
     public Aluno() {
+        this.id = UUID.randomUUID().toString();
     }
 
     
-    public Aluno(String primeiroNome, String ultimoNome, String curso, String linguagem, String email) {
+    public Aluno(String primeiroNome, String ultimoNome, Curso curso, String linguagem, String email) {
+        this.id = UUID.randomUUID().toString();
         this.primeiroNome = primeiroNome;
         this.ultimoNome = ultimoNome;
         this.curso = curso;
@@ -24,11 +27,20 @@ public class Aluno {
         this.email = email;
     }
 
+    public Aluno(String primeiroNome, String ultimoNome, Curso curso, String linguagem, List<String> sistemasOperacionas, String email) {
+        this.id = UUID.randomUUID().toString();
+        this.primeiroNome = primeiroNome;
+        this.ultimoNome = ultimoNome;
+        this.curso = curso;
+        this.linguagem = linguagem;
+        this.sistemasOperacionas = sistemasOperacionas;
+        this.email = email;
+    }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getPrimeiroNome() {
@@ -43,10 +55,10 @@ public class Aluno {
     public void setUltimoNome(String ultimoNome) {
         this.ultimoNome = ultimoNome;
     }
-    public String getCurso() {
+    public Curso getCurso() {
         return curso;
     }
-    public void setCurso(String curso) {
+    public void setCurso(Curso curso) {
         this.curso = curso;
     }
     public String getLinguagem() {

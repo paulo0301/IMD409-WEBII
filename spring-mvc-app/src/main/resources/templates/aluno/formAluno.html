@@ -16,14 +16,11 @@
         <p>Último Nome: <input type="text" th:field="*{ultimoNome}" placeholder="Insira seu nome" /></p>
         <p>Curso: 
             <select th:field="*{curso}">
-                <option th:each="curso: ${cursos}" th:value="${curso}" th:text="${curso}">
+                <option th:each="curso: ${cursos}" th:value="${curso.nome}" th:text="${curso.nome}">
             </select>
         </p>
         <p> Linguagem de programação:
-            <input type="radio" th:field="*{linguagem}" th:value="Java" th:text="Java"/>
-            <input type="radio" th:field="*{linguagem}" th:value="C" th:text="C"/>
-            <input type="radio" th:field="*{linguagem}" th:value="Python" th:text="Python"/>
-            <input type="radio" th:field="*{linguagem}" th:value="Javascript" th:text="Javascript"/>
+            <input th:each="linguagem: ${linguagens}" type="radio" th:field="*{linguagem}" th:value="${linguagem}" th:text="${linguagem}"/>
         </p>
         <p>
             <div th:each="os : ${sistemasOperacionais}">
