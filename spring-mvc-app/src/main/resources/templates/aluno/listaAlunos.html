@@ -11,17 +11,7 @@
 </head>
 
 <body>
-
-
-
-    <p>Lista de alunos cadastrados </p>
-    <ul>
-        <li th:each="aluno : ${alunos}">
-            <span th:text="${aluno.primeiroNome} +' '+ ${aluno.ultimoNome} + ' - Curso:  ' + ${aluno.curso.nome} " />
-        </li>
-    </ul>
-    <br><br>
-    <p>Tabela com as infos</p>
+    <h2>Lista de alunos cadastrados</h2>
     <table>
         <thead>
           <tr>

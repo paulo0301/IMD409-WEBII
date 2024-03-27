@@ -4,12 +4,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MockDataService {
-
     private final String[] linguagens = {
         "Java", "Python", "C++", "Javascript"
     };
     private final String[] sistemasOperacionais = {
-        "OSX", "Windows", "Linux", "Ubuntu"
+        "OSX", "Windows", "Linux"
     };
     public String[] getLinguagens() {
         return linguagens;
