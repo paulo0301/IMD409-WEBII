@@ -39,19 +39,19 @@ public class SpringMvcDatajpaAppApplication {
             List<Disciplina> disciplinas = disciplinaRepository.findAll();
             disciplinas.forEach(System.out::println);
 
-             Aluno aluno = new Aluno("Aluno A");
-            aluno.setCurso(cursos.get(0));
-            aluno.setDisciplinas(disciplinas);
-             Aluno aluno2 = new Aluno("Aluno B");
-            aluno2.setCurso(cursos.get(1));
-            aluno2.setDisciplinas(disciplinas.stream().map(disciplina -> { if(disciplina.getDescricao().contains("Web")){return disciplina;} else {return null;}}).collect(Collectors.toList()));
-            Aluno aluno3 = new Aluno("Aluno C");
-            aluno3.setCurso(cursos.get(2));
-            aluno3.setDisciplinas(disciplinas);
+//             Aluno aluno = new Aluno("Aluno A");
+//            aluno.setCurso(cursos.get(0));
+//            aluno.setDisciplinas(disciplinas);
+//             Aluno aluno2 = new Aluno("Aluno B");
+//            aluno2.setCurso(cursos.get(1));
+//            aluno2.setDisciplinas(disciplinas.stream().map(disciplina -> { if(disciplina.getDescricao().contains("Web")){return disciplina;} else {return null;}}).collect(Collectors.toList()));
+//            Aluno aluno3 = new Aluno("Aluno C");
+//            aluno3.setCurso(cursos.get(2));
+//            aluno3.setDisciplinas(disciplinas);
 
-            alunoRepository.save(aluno);
-            alunoRepository.save(aluno2);
-            alunoRepository.save(aluno3);
+//            alunoRepository.save(aluno);
+//            alunoRepository.save(aluno2);
+//            alunoRepository.save(aluno3);
  
                         
             //FETCH LAZY OR EAGER?
@@ -80,7 +80,7 @@ public class SpringMvcDatajpaAppApplication {
             );
 
             
-            Aluno alunoDisciplinas = alunoRepository.findById(2).map(e -> {return e;}).orElseThrow();
+            Aluno alunoDisciplinas = alunoRepository.findById(29).map(e -> {return e;}).orElseThrow();
             List<Disciplina> disciplinasPorAluno = disciplinaRepository.findAllByAlunoId(alunoDisciplinas.getId());
             System.out.println("Aluno");
             System.out.println(alunoDisciplinas.toString());
