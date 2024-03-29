@@ -1,6 +1,7 @@
 package com.jeanlima.springmvcdatajpaapp.model;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -24,24 +25,29 @@ public class Disciplina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 50)
-    private String descricao;
-
     @Column(length = 7)
     private String codigo;
 
+    @Column(length = 70)
+    private String nome;
+
+    @Column(length = 250)
+    private String ementa;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE})
-    @JoinTable(name="disciplina_aluno",
+    @JoinTable(name="disciplina_curso",
     joinColumns=@JoinColumn(name="disciplina_id"), 
-    inverseJoinColumns=@JoinColumn(name="aluno_id"))
-    private List<Aluno> alunos;
+    inverseJoinColumns=@JoinColumn(name="curso_id"))
+    private List<Curso> cursos;
 
     public Disciplina() {
     }
 
-    public Disciplina(String descricao, String codigo) {
-        this.descricao = descricao;
+    public Disciplina(Integer id, String codigo, String nome, String ementa) {
+        this.id = id;
         this.codigo = codigo;
+        this.nome = nome;
+        this.ementa = ementa;
     }
 
     public Integer getId() {
@@ -52,14 +58,6 @@ public class Disciplina {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public String getCodigo() {
         return codigo;
     }
@@ -68,69 +66,58 @@ public class Disciplina {
         this.codigo = codigo;
     }
 
-    public List<Aluno> getAlunos() {
-        return alunos;
+    public String getNome() {
+        return nome;
     }
 
-    public void setAlunos(List<Aluno> alunos) {
-        this.alunos = alunos;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
+    public String getEmenta() {
+        return ementa;
+    }
+
+    public void setEmenta(String ementa) {
+        this.ementa = ementa;
+    }
+
+    public List<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
+    }
 
     @Override
     public String toString() {
-        return "Disciplina [codigo=" + codigo + ", descricao=" + descricao + ", id=" + id
-                + "]";
+        return "Disciplina{" +
+                "nome='" + nome + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Disciplina that = (Disciplina) o;
+
+        if (!Objects.equals(id, that.id)) return false;
+        if (!Objects.equals(codigo, that.codigo)) return false;
+        if (!Objects.equals(nome, that.nome)) return false;
+        if (!Objects.equals(ementa, that.ementa)) return false;
+        return Objects.equals(cursos, that.cursos);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-        result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-        result = prime * result + ((alunos == null) ? 0 : alunos.hashCode());
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nome != null ? nome.hashCode() : 0);
+        result = 31 * result + (ementa != null ? ementa.hashCode() : 0);
+        result = 31 * result + (cursos != null ? cursos.hashCode() : 0);
         return result;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Disciplina other = (Disciplina) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        if (descricao == null) {
-            if (other.descricao != null)
-                return false;
-        } else if (!descricao.equals(other.descricao))
-            return false;
-        if (codigo == null) {
-            if (other.codigo != null)
-                return false;
-        } else if (!codigo.equals(other.codigo))
-            return false;
-        if (alunos == null) {
-            if (other.alunos != null)
-                return false;
-        } else if (!alunos.equals(other.alunos))
-            return false;
-        return true;
-    }
-
-   
-    
-    
-    
-
-    
-    
 }

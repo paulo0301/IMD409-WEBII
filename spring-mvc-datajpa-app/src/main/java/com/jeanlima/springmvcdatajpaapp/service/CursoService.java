@@ -18,6 +18,12 @@ public class CursoService {
         return cursoRepository.findAll();
     }
 
+    public void salvarCurso(Curso curso){
+        cursoRepository.save(curso);
+    }
+    public void removeCurso(Integer id){
+        cursoRepository.delete(getCursoById(id));
+    }
     public Curso getCursoById(Integer id){
         return cursoRepository.findById(id).map(curso -> {
             return curso;

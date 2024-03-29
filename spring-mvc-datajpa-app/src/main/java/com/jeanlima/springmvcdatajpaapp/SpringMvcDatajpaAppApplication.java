@@ -31,13 +31,13 @@ public class SpringMvcDatajpaAppApplication {
 	public CommandLineRunner init(){
 		return args -> {
 
-            System.out.println("Cursos cadastrados");
-            List<Curso> cursos = cursoRepository.findAll();
-            cursos.forEach(System.out::println);
-
-            System.out.println("Disciplinas cadastradas");
-            List<Disciplina> disciplinas = disciplinaRepository.findAll();
-            disciplinas.forEach(System.out::println);
+//            System.out.println("Cursos cadastrados");
+//            List<Curso> cursos = cursoRepository.findAll();
+//            cursos.forEach(System.out::println);
+//
+//            System.out.println("Disciplinas cadastradas");
+//            List<Disciplina> disciplinas = disciplinaRepository.findAll();
+//            disciplinas.forEach(System.out::println);
 
 //             Aluno aluno = new Aluno("Aluno A");
 //            aluno.setCurso(cursos.get(0));
@@ -56,37 +56,37 @@ public class SpringMvcDatajpaAppApplication {
                         
             //FETCH LAZY OR EAGER?
             //List<Aluno> alunos = alunoRepository.findAll();
-            List<Aluno> alunos = alunoRepository.findAllFetchDisciplinas();
-           System.out.println("LISTANDO ESTUDANTES E DISCIPLINAS - FETCH");
-            alunos.forEach(
-                e -> {
-                    System.out.println(e.toString());
-                    System.out.println(e.getDisciplinas().toString());
-                }
-                
-            );
+//            List<Aluno> alunos = alunoRepository.findAllFetchDisciplinas();
+//           System.out.println("LISTANDO ESTUDANTES E DISCIPLINAS - FETCH");
+//            alunos.forEach(
+//                e -> {
+//                    System.out.println(e.toString());
+//                    System.out.println(e.getDisciplinas().toString());
+//                }
+//
+//            );
             
             
-            List<Aluno> alunoPorDisciplina = alunoRepository.findAllByDisciplinaId(disciplinas.get(1).getId());
-            System.out.println("Lista Alunos por Disciplina");
-            alunoPorDisciplina.forEach(
-                e -> {
-                    System.out.println(e.toString());
-                    //System.out.println(e.getDisciplinas().toString());
-                    
-                    
-                }
-                
-            );
+//            List<Aluno> alunoPorDisciplina = alunoRepository.findAllByDisciplinaId(disciplinas.get(1).getId());
+//            System.out.println("Lista Alunos por Disciplina");
+//            alunoPorDisciplina.forEach(
+//                e -> {
+//                    System.out.println(e.toString());
+//                    //System.out.println(e.getDisciplinas().toString());
+//
+//
+//                }
+//
+//            );
 
             
-            Aluno alunoDisciplinas = alunoRepository.findById(29).map(e -> {return e;}).orElseThrow();
-            List<Disciplina> disciplinasPorAluno = disciplinaRepository.findAllByAlunoId(alunoDisciplinas.getId());
+//            Aluno alunoDisciplinas = alunoRepository.findById(29).map(e -> {return e;}).orElseThrow();
+//            List<Disciplina> disciplinasPorAluno = disciplinaRepository.findAllByAlunoId(alunoDisciplinas.getId());
             System.out.println("Aluno");
-            System.out.println(alunoDisciplinas.toString());
-            alunoDisciplinas.setDisciplinas(disciplinasPorAluno);
-            System.out.println("Disciplinas");
-            System.out.println(alunoDisciplinas.getDisciplinas().toString());
+//            System.out.println(alunoDisciplinas.toString());
+//            alunoDisciplinas.setDisciplinas(disciplinasPorAluno);
+//            System.out.println("Disciplinas");
+//            System.out.println(alunoDisciplinas.getDisciplinas().toString());
 
             
 

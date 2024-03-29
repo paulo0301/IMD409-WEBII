@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>Alunos</title>
+
+</head>
+
+<body>
+
+
+
+    <p>Lista de disciplinas cadastradas </p>
+
+    <table>
+        <thead>
+          <tr>
+            <th th:text="Código"></th>
+            <th th:text="Nome"></th>
+            <th th:text="Ementa"></th>
+            <th th:text="Cursos"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="d: ${disciplinas}">
+            <td th:text="${d.codigo}"></td>
+            <td th:text="${d.nome}"></td>
+            <td th:text="${d.ementa}"></td>
+            <td th:text="${d.cursos}"></td>
+          </tr>
+        </tbody>
+      </table>
+    <br><br>
+    <a href="/">Menu</a><br/><br>
+</body>
+
+</html>

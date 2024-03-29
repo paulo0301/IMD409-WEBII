@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <title>Formulário Aluno</title>
 
     
@@ -16,12 +17,6 @@
             <select th:field="*{curso.id}">
                 <option th:each="curso: ${cursos}" th:value="${curso.id}" th:text="${curso.descricao}">
             </select>
-        </p>
-        <p>Disciplinas
-            <div th:each="disciplina : ${disciplinas}">
-                <input type="checkbox" th:name="disciplinaIds" th:value="${disciplina.id}" th:text="${disciplina.codigo}+' '+${disciplina.descricao}" />
-            </div>
-            
         </p>
 
         <p><input type="submit" value="Adicionar" /></p>

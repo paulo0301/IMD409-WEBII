@@ -1,16 +1,9 @@
 package com.jeanlima.springmvcdatajpaapp.model;
 
+import java.util.List;
 import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-
+import jakarta.persistence.*;
 
 
 @Entity
@@ -24,9 +17,11 @@ public class Curso {
     @Column(length = 50)
     private String descricao;
 
-    @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY)
-    private Set<Aluno> alunos; 
-
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE})
+    @JoinTable(name="disciplina_curso",
+    joinColumns = @JoinColumn(name = "curso_id"),
+    inverseJoinColumns = @JoinColumn(name = "disciplina_id"))
+    private List<Disciplina> disciplinas;
 
     public Curso() {
     }
@@ -48,18 +43,19 @@ public class Curso {
         this.descricao = descricao;
     }
 
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
     @Override
     public String toString() {
         return "Curso [descricao=" + descricao + ", id=" + id + "]";
     }
 
-    public Set<Aluno> getAlunos() {
-        return alunos;
-    }
-
-    public void setAlunos(Set<Aluno> alunos) {
-        this.alunos = alunos;
-    }
 
     @Override
     public int hashCode() {

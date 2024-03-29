@@ -15,6 +15,10 @@ public class DisciplinaService {
     @Autowired
     private DisciplinaRepository disciplinaRepository;
 
+    public void salvarDisciplina(Disciplina disciplina){
+        disciplinaRepository.save(disciplina);
+    }
+
      public List<Disciplina> getDisciplinas(){
         return disciplinaRepository.findAll();
     }
@@ -23,10 +27,6 @@ public class DisciplinaService {
         return disciplinaRepository.findById(id).map(disciplina -> {
             return disciplina;
         }).orElseThrow(() -> null);
-    }
-
-    public List<Disciplina> getAllDisciplinasByAlunoID(Integer id) {
-        return disciplinaRepository.findAllByAlunoId(id);
     }
 
     public List<Disciplina> getDisciplinasByIds(List<Integer> ids){
